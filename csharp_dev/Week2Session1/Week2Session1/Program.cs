@@ -12,10 +12,7 @@ namespace Week2Session1
         static void Main(string[] args)
         {
             //Console.WriteLine("Hello World!");
-            Student s = new Student();
-            //s.student_id = 1;
-            Console.WriteLine(s.student_id);
-            Console.Read();
+
         }
     }
 }

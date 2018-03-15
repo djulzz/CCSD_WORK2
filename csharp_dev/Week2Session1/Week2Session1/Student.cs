@@ -4,19 +4,29 @@ using System.Text;
 
 namespace Week2Session1
 {
-    public class Student
+    public partial class Student
     {
-        public int student_id;
-        public int age;
-        public String NameF;
-        public string NameL;
+        private int student_id;
+        private int age;
+        private String NameF;
+        private string NameL;
 
         public Student()
         {
-            int student_id = 100;
-            int age = 18;
-            String NameF = "Robert";
-            string NameL = "Paulson";
-    }
+            student_id = 100;
+            age = 18;
+            NameF = "Robert";
+            NameL = "Paulson";
+        }
+
+        void SetId( int id )
+        {
+            if (id < 0)
+            {
+                Console.WriteLine("Only positive values are accepted for student id");
+                return;
+            }
+            student_id = id;
+        }
     }
 }
