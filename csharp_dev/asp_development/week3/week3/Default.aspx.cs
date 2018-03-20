@@ -14,7 +14,7 @@ public partial class _Default : System.Web.UI.Page
         //conn_string.UserID = "root";
         //conn_string.Password = "";
         //conn_string.Database = "OurBoard";
-        String cnx = "Database=OurBoard;Data Source=localhost";
+        String cnx = "Database=OurBoard;Data Source=localhost;User Id=root;SslMode=none";
         MySqlConnection con = new MySqlConnection( cnx );
 
         try
