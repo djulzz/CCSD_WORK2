@@ -27,8 +27,19 @@ public partial class EnterNewStudent : System.Web.UI.Page
         String LastName = TextBox_NameLast.Text;
 
         String query = @"insert into Students(firstName, lastName ) values('" + FirstName + "', '" + LastName + "')";
+        String carId = "1005";
+        //String query2 = @"insert into Attributes( carId, make, model, mpg) values(" + carId
         MySqlCommand cmd = new MySqlCommand(query, con);
-        cmd.ExecuteNonQuery();
+        try
+        {
+            cmd.ExecuteNonQuery();
+        } catch( Exception exep )
+        {
+            String error = exep.Message;
+            Session["Last_Error"] = error;
+            Response.Redirect("Error.aspx");
+            return;
+        }
         Response.Redirect("Default.aspx");
         return;
     }
