@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace week4_arrays_collections
 {
@@ -6,6 +7,15 @@ namespace week4_arrays_collections
     {
         static void Main(string[] args)
         {
+            DynamicArray da = new DynamicArray();
+            da.Push(0);
+            da.Push(1);
+            da.Push(2);
+            da.Push(3);
+
+            da.Debug();
+            da[0] = 3;
+            List<int> ls = new List<int>();
             int[] myArray = new int[10];
 
             for( int i = 0; i < 10; i++ )

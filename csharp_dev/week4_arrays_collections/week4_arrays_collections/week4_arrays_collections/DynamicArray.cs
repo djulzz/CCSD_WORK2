@@ -16,6 +16,41 @@ namespace week4_arrays_collections
             m_NumberOfValuesAppended = 0;
         }
 
+        public void Push( double v )
+        {
+            if(m_NumberOfValuesAppended == m_array.Length )
+            {
+                int old_size = m_array.Length;
+                double[] temp = new double[m_array.Length];
+                for (int i = 0; i < m_array.Length; i++)
+                    temp[i] = m_array[i];
+
+                m_array = new double[old_size + 1];
+                for (int i = 0; i < old_size; i++)
+                {
+                    m_array[i] = temp[i];
+                }
+            }
+            m_NumberOfValuesAppended++;
+            m_array[m_NumberOfValuesAppended - 1] = v;
+        }
+
+        public void Debug()
+        {
+            for (int i = 0; i < m_NumberOfValuesAppended; i++)
+                Console.WriteLine(m_array[i]);
+        }
+        public double this[int index]
+        {
+            get
+            {
+                return m_array[index];
+            }
+            set
+            {
+                m_array[index] = value;
+            }
+        }
         void AppendNewValue( double v )
         {
             // if my array is too small, then attempt at
