@@ -23,6 +23,15 @@ namespace Week01
             // When clicking on m_button_clickMe, the click generates
             // a click event, which ha been wired to the "Handle_Click"
             // event handler in MS Form Designer.
+
+            String firstName = m_textBox_FirstName.Text;
+            //bool res = firstName.IsNullOrEmpty()
+            if ( String.IsNullOrEmpty( firstName ))
+            {
+                return;
+            }
+            String greeting = "Hello, " + firstName;
+            m_label_feedback.Text = greeting;
         }
     }
 }

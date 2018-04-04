@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assessment01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Assessment01.Designer.cs">
+      <DependentUpon>Assessment01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Assignment01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Assignment01.Designer.cs">
+      <DependentUpon>Assignment01.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +64,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Assessment01.resx">
+      <DependentUpon>Assessment01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assignment01.resx">
+      <DependentUpon>Assignment01.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
