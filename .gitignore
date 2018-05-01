@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/PRG_351/Java_Mod_5/nbproject/private/
+/PRG_351/Java_Mod_5/build/

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="a field in the &quot;class designer&quot; is equivalent to a &quot;member variable&quot; when NOT using the class designer">
+    <Position X="4.375" Y="0.531" Height="0.688" Width="2.533" />
+  </Comment>
+  <Class Name="Week02.SportTeam_Tennis">
+    <Position X="0.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SportTeam_Tennis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Week02.SportTeam_Football">
+    <Position X="3.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SportTeam_Football.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Week02.SportTeam">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAgAAAEACAABAAAAAAAA=</HashCode>
+      <FileName>SportTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Week02.Person">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAQg=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Week02.Coach">
+    <Position X="6.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Coach.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
