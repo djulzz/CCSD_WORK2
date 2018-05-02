@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java_mod_5;
+package java_assignments;
 
 /**
  *
  * @author Esposito
  */
-public interface IUnits {
-    int NumberUnits();
+public class PaintType {
+    
+    int price;
+    String brand;
 }

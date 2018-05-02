@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java_mod_5;
+package java_assignments;
 
 /**
  *
@@ -18,7 +18,9 @@ public class Java_Mod_5 {
         // TODO code application logic here
         Housing myHousing = new Housing();
         
-        Housing housing2 = new Housing();
+        newpackage.Housing h3 = new newpackage.Housing();
+        
+        Housing housing2 = new Housing(1979, "311 S Clementine Street - Apt. D - Oceanside, CA - 92054");
         
         int a = 2;
         System.out.println( myHousing.m_YearBuilt );
@@ -29,6 +31,8 @@ public class Java_Mod_5 {
         int[] ar; // un initialized reference
         ar = new int[ 5 ];
         System.out.println( ar[ 0 ] );
+        
+        week1.assignment.chapter1.BankAccount.Unit_Test();
         
     }
     

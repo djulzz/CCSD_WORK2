@@ -11,3 +11,12 @@ Note #3 - There is no "virtual" keyword in Java
 Note #4 - Using the console
 (In C#) --> Console.Writeline
 (In Java) --> System.out.println
+
+Note #5 - Namespaces in Java
+In Java namespaces are designated under a different name: packages
+
+Note #6 - In Java, a "bool" really is a "boolean"
+
+Note #7 - When writting setter (for C++, C #, and Java), the return type is ALWAYS void
+
+Note #8 - "final" is a reserved keyword and cannot be used as a variable name.

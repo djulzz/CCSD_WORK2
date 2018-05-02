@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java_mod_5;
+package java_assignments;
 
 /**
  *
@@ -24,6 +24,11 @@ package java_mod_5;
             initializeType();
         }
         
+        public Housing( int a, String b, int c )
+        {
+        }
+        
+
         public Housing( int yearBuilt, String localAddress )
         {
             m_YearBuilt = yearBuilt;
