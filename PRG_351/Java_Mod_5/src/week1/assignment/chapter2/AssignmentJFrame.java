@@ -16,7 +16,18 @@ public class AssignmentJFrame {
         Color c = new Color( 50, 100, 150 );
         JFrame f = new JFrame( );
         f.setSize(400, 400);
-        f.getContentPane().setBackground( new java.awt.Color( c.R(), c.G(), c.B() ) );
+        java.awt.Color c2 = java.awt.Color.RED;
+        java.awt.Color c3 = c2.darker();
+        int r = c3.getRed();
+        int g = c3.getGreen();
+        int b = c3.getBlue();
+        String s;
+        s = "R = " + r;
+        s += " - G = " + g;
+        s += " - B = " + b;
+        System.out.println( s );
+        // new java.awt.Color( c.R(), c.G(), c.B() )
+        f.getContentPane().setBackground( c3 );
         f.show();
     }
 }

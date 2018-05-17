@@ -13,17 +13,31 @@ public class BankAccount {
     double balance;
     double interestRate;
     
+    public BankAccount( double ibalance ) {
+        balance = ibalance;
+        interestRate = 0.0;
+    }
+    public double Deposit( double amount ) {
+        balance = balance + amount;
+        return balance;
+    }
+    public double Withdraw( double amount ) {
+        balance = balance - amount;
+        return balance;
+    }
+    public double addInterest( double interest ) {
+        balance = balance * ( 1.0 + interest / 100.0 );
+        return balance;
+    }
     public BankAccount( double ibalance, double iinterestRate ) {
         balance = ibalance;
         interestRate = iinterestRate;
     }
-    
     public String ToString()
     {
         String s = "Balance = " + balance  + " - Interest Rate = " + interestRate;
         return s;
     }
-    
     public double ComputeBalanceAfter_Jordan( int numberYears )
     {
         double amount = balance;
