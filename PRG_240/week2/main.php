@@ -10,6 +10,14 @@ class Student
 	public function Get_LastName() { return $this->LastName; }
 	public function Get_ID() { return $this->Id; }
 
+	public static function withParams2( $_id, $_FirstName, $_LastName, $_unused )
+	{
+        $instance = new self();
+        $instance->FirstName = $_FirstName;
+        $instance->LastName = $_LastName;
+        $instance->Id = $_id;
+        return $instance;
+	}
     public static function withParams( $_id, $_FirstName, $_LastName ) {
         $instance = new self();
         $instance->FirstName = $_FirstName;
@@ -40,6 +48,13 @@ class Course
 	private $StudentCount;
 	private $Student;
 
+	/**
+	 * Example:
+	 * $course = new Course();
+	 * $ course->AddStudent( 1, "FN", "LN ");
+
+	 * $current_student = $course->GetStudentAt( 0 );
+	 */
 	public function GetStudentAt( $index )
 	{
 		return $this->Student[ $index ];
@@ -54,12 +69,14 @@ class Course
 	public function AddStudent( $_id, $_FirstName, $_LastName )
 	{
 		$student = Student::withParams( $_id, $_FirstName, $_LastName );
+		// WARNING: THIS IS NOT AN OVERWRITE!!!!!!!!!!!!!!!!!!!!!!
 		$this->Student[] = $student;
 		$this->StudentCount = $this->StudentCount + 1;
 	}
 
 	public function Display()
 	{
+		// IN PHP, FOR MEMBER VARIABLES, $ SIGN GOES IN FRONT OF THE THIS KEYWORD ONLY
 		for( $i = 0; $i < $this->StudentCount; $i++ ) {
 			$this->Student[ $i ]->Display();
 		}
@@ -68,6 +85,8 @@ class Course
 	public function __destruct()
 	{
 		print( "Course - Destructor called<br/>");
+
+		// MEMORY DISPOSAL, NOT USING THE ARRAY ANYMORE, SO WE "UNSET" IT
 		unset( $this->Student );
 	}
 }
@@ -124,6 +143,8 @@ class SqlConnectionManager
 }
 
 // Actual Running Code
+
+$isolated_student = Student::withParams2( 1, "b", "c", "o" );
 $class = new Course();
 $class->AddStudent( 1, "Julien", "Esposito" );
 $class->AddStudent( 2, "Jordan", "Gross" );
