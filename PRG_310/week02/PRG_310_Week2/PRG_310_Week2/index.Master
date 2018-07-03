@@ -1,0 +1,18 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="index.master.cs" Inherits="PRG_310_Week2.index" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <title>Master Page</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="nav" runat="server">
+    </asp:ContentPlaceHolder>
+    <h1>Master Page</h1>
+</body>
+</html>

@@ -1,0 +1,16 @@
+CREATE TABLE PADDLING
+(
+	TRIP_ID DECIMAL( 3, 0 ) NOT NULL COMMENT 'Trip ID (primary key)',
+	TRIP_NAME CHAR( 75 ) COMMENT 'Trip name',
+	STATE CHAR( 2 ) COMMENT 'Trip state',
+	DISTANCE DECIMAL( 4, 0 ) COMMENT 'Trip distance',
+	MAX_GRP_SIZE DECIMAL( 4, 0 ) COMMENT 'Maximum number of people on trip',
+	SEASON CHAR( 20 ) COMMENT 'Season in which trip takes place'
+);
+
+SHOW FULL COLUMNS FROM Tour_DB.PADDLING;
+
+INSERT INTO PADDLING
+		SELECT TRIP_ID, TRIP_NAME, STATE, DISTANCE, MAX_GRP_SIZE, SEASON FROM TRIP
+ 			WHERE 
+ 		( TYPE = 'Paddling' );

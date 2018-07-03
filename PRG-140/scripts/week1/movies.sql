@@ -1,0 +1,44 @@
+create database movies;
+use movies;
+
+# Task 01
+create table director
+(
+	DIRECTOR_ID INT PRIMARY KEY,
+	FIRST_NAME VARCHAR( 30 ),
+	LAST_NAME VARCHAR( 30 )
+);
+
+describe director;
+
+# Task 02
+CREATE TABLE MOVIE 
+(
+	MOVIE_ID INT PRIMARY KEY,
+	TITLE VARCHAR( 75 ),
+	GENRE VARCHAR( 50 ),
+	MPAA VARCHAR( 5 ),
+	RELEASE_DATE DATE,
+	LENGTH_MINUTES INT,
+	DIRECTOR_ID INT
+);
+
+describe MOVIE;
+
+# Task 03
+INSERT INTO DIRECTOR VALUES( 1, 'Steven', 'Spielberg');
+INSERT INTO DIRECTOR VALUES( 2, 'Ron', 'Howard');
+SELECT * FROM DIRECTOR;
+
+# Task 04
+INSERT INTO MOVIE VALUES( 1, 'Apollo 13', 'Drama', 'PG', '1995-06-30', 140, 2 );
+INSERT INTO MOVIE VALUES( 2, 'Jaws', 'Drama', 'PG', '1975-06-20', 130, 1 );
+INSERT INTO MOVIE VALUES( 3, 'E.T. the Extra-Terrestrial', 'Fantasy', 'PG', '1982-06-11', 121, 1 );
+INSERT INTO MOVIE VALUES( 4, 'Close Encounters of the Third Kind', 'Science Fiction', 'PG', '1977-11-16', 140, 1 );
+SELECT * FROM MOVIE;
+
+# Task 05
+SELECT TITLE, LENGTH_MINUTES FROM MOVIE;
+
+# Task 06
+SELECT TITLE, LENGTH_MINUTES FROM MOVIE WHERE ( LENGTH_MINUTES >= 130 );

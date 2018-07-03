@@ -10,7 +10,6 @@ namespace external_library
         protected Customer mCustomer;
 
        abstract public void DoStuff();
-
         protected Account( double balance, Customer c )
         {
             mBalance = balance;
@@ -23,6 +22,11 @@ namespace external_library
         public void Withdraw(double amount2Withdraw)
         {
             mBalance = mBalance - amount2Withdraw;
+            if( mBalance < 0 )
+            {
+                BalanceOverdrawnException e = new BalanceOverdrawnException("The account got overdrawn");
+                throw e;
+            }
         }
         public double GetRemainingBalance()
         {
