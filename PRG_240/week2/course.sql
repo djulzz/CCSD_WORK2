@@ -1,0 +1,11 @@
+
+create database COURSE;
+USE COURSE;
+
+
+create table STUDENTS
+(
+	ID INT PRIMARY KEY,
+	FIRST_NAME VARCHAR( 50 ),
+	LAST_NAME VARCHAR( 50 )
+);
