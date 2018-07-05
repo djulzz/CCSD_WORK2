@@ -59,6 +59,9 @@ namespace Intro
                 if (mConnection.State == System.Data.ConnectionState.Open)
                 {
                     Response.Write("CNX Success!");
+
+                    // this is how you tranfer a DB page to page
+                    Session["CNX"] = mConnection;
                 }
             } catch( Exception exe ) 
             {
