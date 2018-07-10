@@ -1,0 +1,15 @@
+﻿body
+{
+    
+}
+
+body
+{
+    background-color: black;
+    color: white;
+}
+footer.fixed
+{
+    position: absolute;
+    bottom: 90%;
+}

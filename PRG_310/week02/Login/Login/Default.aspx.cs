@@ -14,7 +14,7 @@ namespace Login
         private MySqlConnection connection;
         protected void Page_Load(object sender, EventArgs e)
         {
-            String dbName = "LOGINx";
+            String dbName = "LOGIN";
             String connection_params = "Data Source=localhost;Database=" + dbName + ";User Id=root;Password=\"\";SSL Mode=None";
             connection = new MySqlConnection(connection_params);
             try // try is the Place Holder for code that does work
@@ -26,11 +26,6 @@ namespace Login
             {
                 Label_Error.Text = "Error - Message = " + ex.Message;
             }
-        }
-
-        protected void Hanle_Returning(object sender, EventArgs e)
-        {
-
         }
 
         protected void Handle_Click(object sender, EventArgs e)
