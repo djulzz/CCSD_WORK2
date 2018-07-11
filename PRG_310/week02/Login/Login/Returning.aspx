@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="generic.css" type="text/css" />
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <h1>Returning Customer</h1>
+    <h1>Returning Customer</h1>
+    <form id="form_returning_01" runat="server">
+        <table id="table01">
+            <tr><td>Login</td><td><input type="text" id="login" runat="server"/></td></tr>
+            <tr><td>Password</td><td><input type="text" id="password" runat="server"/></td></tr>
+            <tr><td>Email</td><td><input type="text" id="email" runat="server"/></td></tr>
+        </table>
+        <asp:Button ID="Log" Text="Login" OnClick="Process_Returning_Customer" runat="server"/>
 
-        </div>
     </form>
 </body>
 </html>

@@ -12,30 +12,21 @@
         <div>
             NEW<br />
         </div>
+        <asp:Table ID="ThatTableThough" runat="server">
+
+        </asp:Table>
         <table>
             <tr>
-                <td>
-                    Login
-                </td>
-                <td>
-                    <input type="text" id="login" runat="server"/>
-                </td>
+                <td>Login</td>
+                <td><input type="text" id="login" runat="server"/></td>
             </tr>
             <tr>
-                <td>
-                    Password
-                </td>
-                <td>
-                    <input type="text" id="password" runat="server"/>
-                </td>
+                <td>Password</td>
+                <td><input type="text" id="password" runat="server"/></td>
             </tr>
             <tr>
-                <td>
-                    Email
-                </td>
-                <td>
-                    <input type="text" id="email" runat="server"/>
-                </td>
+                <td>Email</td>
+                <td><input type="text" id="email" runat="server"/></td>
             </tr>
         </table>
         <br />

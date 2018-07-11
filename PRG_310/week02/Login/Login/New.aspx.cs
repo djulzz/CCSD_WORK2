@@ -16,17 +16,14 @@ namespace Login
         {
             // retriving connection
             connection = (MySqlConnection)(Session["connection"]);
+            //TableRow row = new TableRow();
+            //TableCell cell_login = new TableCell();
+            //cell_login.Text = "Login";
+            //row.Cells.Add(cell_login);
+            //ThatTableThough.Rows.Add(row);
+
         }
 
-        private String s( String txt )
-        {
-            return "'" + txt + "'";
-        }
-
-        private String sc( String txt )
-        {
-            return s(txt) + ", ";
-        }
         protected void Add_New_User(object sender, EventArgs e)
         {
             // Put code for database here
@@ -34,8 +31,7 @@ namespace Login
             String s_passd = password.Value.ToString();
             String s_email = email.Value.ToString();
 
-            //String query = "SELECT LOGIN, PASSWORD, EMAIL FROM ENTRIES WHERE (LOGIN = " + s(s_login) + ") and (PASSWORD = " + s(s_passd) + ") and (" + s(s_email) + ")";
-            String query2 = "INSERT INTO ENTRIES( LOGIN, PASSWORD, EMAIL ) VALUES( " + sc(s_login) + sc(s_passd) + s(s_email) + ")";
+            String query2 = "INSERT INTO ENTRIES( LOGIN, PASSWORD, EMAIL ) VALUES( " + DB.sc(s_login) + DB.sc(s_passd) + DB.s(s_email) + ");";
             MySqlCommand cmd = new MySqlCommand(query2, connection);
             try
             {

@@ -3,12 +3,14 @@
     
 }
 
+
 body
 {
     background-color: black;
     color: white;
 }
-footer.fixed
+
+footer
 {
     position: absolute;
     bottom: 90%;

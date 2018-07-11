@@ -7,4 +7,17 @@ CREATE TABLE ENTRIES
 	PRIMARY KEY( LOGIN, PASSWORD, EMAIL )
 );
 
+CREATE TABLE ENTRIES
+(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	LOGIN VARCHAR( 50 ) NOT NULL,
+	PASSWORD VARCHAR( 50 ) NOT NULL,
+	EMAIL VARCHAR( 50 ) NOT NULL
+
+);
+
 INSERT INTO ENTRIES( LOGIN, PASSWORD, EMAIL ) VALUES( 'djulzz', 'vantorille1', 'julien.esposito@cc-sd.edu' );
+INSERT INTO ENTRIES( LOGIN, PASSWORD, EMAIL ) VALUES( 'djulzz2', 'vantorille12', 'julien2.esposito@cc-sd.edu' );
+
+-- SELECT LOGIN, PASSWORD, EMAIL FROM ENTRIES WHERE ( LOGIN = 'djulzz' ) AND
+--  ( PASSWORD = 'vantorille1' ) AND ( EMAIL = 'julien.esposito@cc-sd.edu');

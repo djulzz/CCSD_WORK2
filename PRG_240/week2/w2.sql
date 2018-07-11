@@ -66,4 +66,9 @@ insert into instructor( FIRST_NAME, LAST_NAME ) values( 'Michael', 'Harris' );
 insert into enrollment values( 1, 'PRG_140');
 insert into enrollment values( 2, 'OPS_101');
 
-insert into enrollment select student.id, class.code from student, class where ( student.LAST_NAME == 'Tocki') and (class.code = 'PRG_140');
+insert into enrollment select student.id, class.code
+ from student, class where 
+ ( student.LAST_NAME == 'Tocki')
+  and (class.code = 'PRG_140');
+
+  String connection_params = "Data Source=localhost;Database=PRG_310_NIGHT;User Id=root;Password=\"\";SSL Mode=None";
