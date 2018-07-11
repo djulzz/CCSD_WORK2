@@ -28,6 +28,7 @@ namespace Login
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 if (rdr.HasRows)
                     result = true;
+                rdr.Close();
             }
             catch (Exception exc)
             {

@@ -16,14 +16,13 @@ namespace Login
         {
             // retriving connection
             connection = (MySqlConnection)(Session["connection"]);
-            //TableRow row = new TableRow();
-            //TableCell cell_login = new TableCell();
-            //cell_login.Text = "Login";
-            //row.Cells.Add(cell_login);
-            //ThatTableThough.Rows.Add(row);
-
         }
 
+        protected void Print_Feedback( String Feedback )
+        {
+            Label_Exception.Text = Feedback;
+            return;
+        }
         protected void Add_New_User(object sender, EventArgs e)
         {
             // Put code for database here
@@ -31,15 +30,24 @@ namespace Login
             String s_passd = password.Value.ToString();
             String s_email = email.Value.ToString();
 
-            String query2 = "INSERT INTO ENTRIES( LOGIN, PASSWORD, EMAIL ) VALUES( " + DB.sc(s_login) + DB.sc(s_passd) + DB.s(s_email) + ");";
-            MySqlCommand cmd = new MySqlCommand(query2, connection);
-            try
+            String potential_error = "";
+            bool userExists = DB.UserExists(s_login, s_passd, s_email, ref connection, out potential_error);
+            if (userExists == false)
             {
-                cmd.ExecuteNonQuery();
-                Label_Exception.Text = "Insertion performed correctly";
-            } catch ( Exception ex )
+                String query2 = "INSERT INTO ENTRIES( LOGIN, PASSWORD, EMAIL ) VALUES( " + DB.sc(s_login) + DB.sc(s_passd) + DB.s(s_email) + ");";
+                MySqlCommand cmd = new MySqlCommand(query2, connection);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    Print_Feedback("Insertion performed correctly");
+                }
+                catch (Exception ex)
+                {
+                    Print_Feedback("Error, cannot insert new user into DB. - Error = " + ex.Message);
+                }
+            } else
             {
-                Label_Exception.Text = "Error, cannot insert new user into DB. - Error = " + ex.Message;
+                Print_Feedback("User already exists");
             }
         }
     }
