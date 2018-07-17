@@ -23,6 +23,11 @@ namespace Login
             Label_Exception.Text = Feedback;
             return;
         }
+
+        protected void ProcessClick(object sender, EventArgs e)
+        {
+            Response.Write("ProcessClick Called");
+        }
         protected void Add_New_User(object sender, EventArgs e)
         {
             // Put code for database here
@@ -31,7 +36,9 @@ namespace Login
             String s_email = email.Value.ToString();
 
             String potential_error = "";
-            bool userExists = DB.UserExists(s_login, s_passd, s_email, ref connection, out potential_error);
+            int dummy = 0;
+            bool userExists = DB.UserExists(s_login, s_passd, s_email, ref connection, out potential_error, ref dummy );
+
             if (userExists == false)
             {
                 String query2 = "INSERT INTO ENTRIES( LOGIN, PASSWORD, EMAIL ) VALUES( " + DB.sc(s_login) + DB.sc(s_passd) + DB.s(s_email) + ");";

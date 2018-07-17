@@ -16,8 +16,11 @@ namespace Login
         {
             if( !Page.IsPostBack ) { // if this is the 1st time we are loading
                                      // the page
+
                     String dbName = "LOGIN";
-                    String connection_params = "Data Source=localhost;Database=" + dbName + ";User Id=root;Password=\"\";SSL Mode=None";
+                String connection_params = "Data Source=localhost;Database=";
+                connection_params += dbName;
+                connection_params += ";User Id=root;Password=\"\";SSL Mode=None";
                     connection = new MySqlConnection(connection_params);
                     try // try is the Place Holder for code that does work
                     {
@@ -30,6 +33,7 @@ namespace Login
                         Label_Error.Text = "Error - Message = " + ex.Message;
                     }
                 }
+            Label_Error.Text = "In Default.aspx, the connection was created successfully";
         }
 
         protected void Handle_Click(object sender, EventArgs e)

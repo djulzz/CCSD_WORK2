@@ -31,8 +31,9 @@ namespace Login
             String s_pwd = password.Value;
             String s_email = email.Value;
 
+            int dummy = 0;
             String potential_error = "";
-            if( DB.UserExists(s_login, s_pwd, s_email, ref connection, out potential_error) )
+            if( DB.UserExists(s_login, s_pwd, s_email, ref connection, out potential_error, ref dummy ) )
             {
                 login.Value = "Exists!!!!";
             }

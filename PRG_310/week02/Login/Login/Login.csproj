@@ -91,6 +91,7 @@
     <Content Include="New.aspx" />
     <Content Include="Returning.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB_Helper.cs" />
@@ -115,6 +116,13 @@
     </Compile>
     <Compile Include="Returning.aspx.designer.cs">
       <DependentUpon>Returning.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

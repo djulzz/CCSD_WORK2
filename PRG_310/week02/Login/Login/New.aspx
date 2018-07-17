@@ -31,6 +31,7 @@
         </table>
         <br />
         <asp:Button ID="Button_EnterNewUser" runat="server" OnClick="Add_New_User" Text="Add New User" placeholder="Click here if this is your first time"/>
+        <input type="button" OnServerClick="ProcessClick" runat="server" value="Click Me"/>
     </form>
     <footer>
         <asp:Label ID="Label_Exception" runat="server"></asp:Label>

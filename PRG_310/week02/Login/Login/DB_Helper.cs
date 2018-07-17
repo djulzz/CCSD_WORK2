@@ -17,18 +17,22 @@ namespace Login
         {
             return s(txt) + ", ";
         }
-        public static bool UserExists(String login, String pwd, String email, ref MySqlConnection cnx, out String potential_error )
+        public static bool UserExists(String login, String pwd, String email, ref MySqlConnection cnx, out String potential_error, ref int dummy )
         {
+            int compiler_generated_dummy = dummy;
+            dummy = 5;
             String error = "none";
             bool result = false;
             String query = "SELECT LOGIN, PASSWORD, EMAIL FROM ENTRIES WHERE(LOGIN = " + DB.s(login) + ")" + " AND (PASSWORD = " + s(pwd) + ")" + " AND (EMAIL = " + s(email) + ")";
             MySqlCommand cmd = new MySqlCommand(query, cnx );
             try
             {
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                if (rdr.HasRows)
-                    result = true;
-                rdr.Close();
+                using (MySqlDataReader rdr = cmd.ExecuteReader()) 
+                {
+                    if (rdr.HasRows)
+                        result = true;
+                    //rdr.Close();
+                }
             }
             catch (Exception exc)
             {
