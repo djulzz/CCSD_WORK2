@@ -10,6 +10,12 @@ body
 {
     background-color: black;
     color: white;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 
+#error_style
+{
+    color: red;
+}

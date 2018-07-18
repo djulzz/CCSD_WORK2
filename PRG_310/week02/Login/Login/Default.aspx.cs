@@ -63,6 +63,8 @@ namespace Login
             Response.Write("login = " + login);
 
             Label_Error.Text = "About to edit user with login " + login + " and password = " + pwd + " and email " + email;
+            String query_string = "EditUser.aspx?login=" + login + "&pwd=" + pwd + "&email=" + email;
+            Response.Redirect(query_string);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -102,7 +104,8 @@ namespace Login
                     tr.Cells.Add(cell);
                     Table_Dynamic.Rows.Add(tr);
                 }
-            } else
+            } else // The page is not post back, we
+                   // must recover the list of buttons
             {
                 connection = (MySqlConnection)Session["connection"];
                 lst = (List<Button>)Session["list"];

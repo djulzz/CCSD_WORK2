@@ -21,7 +21,7 @@
             <br />
         </div>
         <div>
-            <asp:Label ID="Label_Error" runat="server"></asp:Label>
+            <asp:Label ID="Label_Error" runat="server" CssClass="error_style"></asp:Label>
 
         </div>
     </form>
