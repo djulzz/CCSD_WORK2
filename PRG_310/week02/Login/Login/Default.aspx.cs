@@ -12,11 +12,11 @@ namespace Login
     public partial class Default : System.Web.UI.Page
     {
         private MySqlConnection connection;
-        private List<Button> lst;
+        private List<SuperButton> lst;
 
         public Default() : base()
         {
-            lst = new List<Button>();
+            lst = new List<SuperButton>();
         }
         protected void PopulateListOfButtonsWithUserInfo()
         {
@@ -35,8 +35,8 @@ namespace Login
                         String login = (String)rdr["login"];
                         String pwd = (String)rdr["password"];
                         String email = (String)rdr["email"];
-                        String caption = login + s + pwd + s + email;
-                        Button b = new Button();
+                        String caption = login;
+                        SuperButton b = new SuperButton(login, pwd, email);
                         b.Text = caption;
                         lst.Add(b);
                     } while (rdr.Read());
@@ -53,17 +53,17 @@ namespace Login
 
         protected void OnDynamicClick(object sender, EventArgs e)
         {
-            Button b = (Button)sender;
-            String caption = b.Text;
-            char[] separator = { ',' };
-            String[] elements = caption.Split(separator );
-            String login = elements[0];
-            String pwd = elements[1];
-            String email = elements[2];
-            Response.Write("login = " + login);
+            SuperButton b = (SuperButton)sender;
+            //String caption = b.Text;
+            //char[] separator = { ',' };
+            //String[] elements = caption.Split(separator );
+            //String login = elements[0];
+            //String pwd = elements[1];
+            //String email = elements[2];
+            //Response.Write("login = " + login);
 
-            Label_Error.Text = "About to edit user with login " + login + " and password = " + pwd + " and email " + email;
-            String query_string = "EditUser.aspx?login=" + login + "&pwd=" + pwd + "&email=" + email;
+            Label_Error.Text = "About to edit user with login " + b.Login + " and password = " + b.Pwd + " and email " + b.Email;
+            String query_string = "EditUser.aspx?login=" + b.Login + "&pwd=" + b.Pwd + "&email=" + b.Email;
             Response.Redirect(query_string);
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -71,7 +71,8 @@ namespace Login
             if( !Page.IsPostBack ) { // if this is the 1st time we are loading
                                      // the page
 
-                    String dbName = "LOGIN";
+                String s = @"Data Source=localhost;Database=LOGIN;User Id=root;Password="";SSL Mode=None";
+                String dbName = "LOGIN";
                 String connection_params = "Data Source=localhost;Database=";
                 connection_params += dbName;
                 connection_params += ";User Id=root;Password=\"\";SSL Mode=None";
@@ -85,6 +86,11 @@ namespace Login
                     catch (Exception ex)
                     {
                         Label_Error.Text = "Error - Message = " + ex.Message;
+                    }
+
+                    finally
+                    {
+
                     }
 
                 // this is new: "the list"
@@ -108,7 +114,7 @@ namespace Login
                    // must recover the list of buttons
             {
                 connection = (MySqlConnection)Session["connection"];
-                lst = (List<Button>)Session["list"];
+                lst = (List<SuperButton>)Session["list"];
                 int numberCustomers = lst.Count;
                 for (int i = 0; i < numberCustomers; i++)
                 {

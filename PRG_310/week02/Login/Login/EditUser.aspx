@@ -23,6 +23,7 @@
                 <td><input type="text" id="email" runat="server"/></td>
             </tr>
         </table>
+        <input type="button" runat="server" onserverclick="UpdateEntry_ServerClick" />
     </form>
 </body>
 </html>
