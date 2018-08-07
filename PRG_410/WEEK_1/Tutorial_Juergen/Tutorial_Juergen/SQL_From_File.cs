@@ -7,13 +7,28 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 
-namespace Tutorial_Juergen
+namespace API_SQL_From_File
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class SQL_From_File
     {
         private String mLastError;
         private MySqlConnection cnx;
 
+        public MySqlConnection Connection
+        {
+            get
+            {
+                return cnx;
+            }
+        }
+
+        public String ConnectionString
+        {
+            get
+            {
+                return cnx.ConnectionString;
+            }
+        }
         /// <summary>
         /// This Method takes a string as an input, and 
         /// analyzes if that input is an IPv4 address.
@@ -213,12 +228,13 @@ namespace Tutorial_Juergen
             }
             finally
             {
-                Response.Write(s);
+                ;
+                //Response.Write(s);
             }
             return;
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        public SQL_From_File()
         {
             InitializeMySQLConnection(@"C:\Users\Esposito\Documents\GitHub\CCSD_WORK2\PRG_410\WEEK_1\Tutorial_Juergen\Tutorial_Juergen\bin\config.txt");
         }

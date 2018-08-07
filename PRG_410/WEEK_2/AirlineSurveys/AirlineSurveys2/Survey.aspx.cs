@@ -5,11 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+//using API_SQL_From_File;
 
 namespace AirlineSurveys2
 {
 
-    enum Survey_Criteria
+    public enum Survey_Criteria
     {
         R_cleanliness = 0,
         R_friendly = 1,
@@ -18,15 +19,43 @@ namespace AirlineSurveys2
         R_comfort = 4
     }
 
-    enum Qualifier
+    public enum Qualifier
     {
         No_Opinion = 0,
-        Excellent
+        Poor = 1,
+        Fair = 2,
+        Good = 3,
+        Excellent = 4
     }
+
+    public class Review_Data
+    {
+        private Dictionary<Survey_Criteria, Qualifier> review;
+    }
+
+
+
     public partial class Survey : System.Web.UI.Page
     {
+        private static int NUMBER_CRITERIA = 5;
         private MySqlConnection cnx;
         private Dictionary<Survey_Criteria, RadioButtonList> mLists;
+        //private SQL_From_File mSQLFile;
+
+        public Qualifier StringToEnum(String s)
+        {
+            Qualifier q = Qualifier.No_Opinion;
+            switch (s)
+            {
+                case "No Opinion": { q = Qualifier.No_Opinion; } break;
+                case "Poor": { q = Qualifier.Poor; } break;
+                case "Fair": { q = Qualifier.Fair; } break;
+                case "Good": { q = Qualifier.Good; } break;
+                case "Excellent": { q = Qualifier.Excellent; } break;
+                default: break;
+            }
+            return q;
+        }
 
         public Survey() : base()
         {
@@ -92,20 +121,17 @@ namespace AirlineSurveys2
             return;
         }
 
+        protected void ValidateReview(object sender, EventArgs e)
+        {
+
+        }
         protected void HandleClick(object sender, EventArgs e)
         {
-            //if( sender.ToString() != "System.Web.UI.WebControls.RadioButtonList" )
-            //{
-            //    // This is absolutely unnecessary, but guarantees that the
-            //    // sender is always
-            //    return;
-            //}
-            
             RadioButtonList rbl = (RadioButtonList)sender;
-            
             String RadioButtonList_selected = rbl.ID;
             String selection = rbl.SelectedItem.Text;
             String msg = RadioButtonList_selected + "\t" + selection;
+            Qualifier qualifier = StringToEnum(selection);
             Session["new_message"] = msg;
         }
 
@@ -124,7 +150,8 @@ namespace AirlineSurveys2
 
             if (!Page.IsPostBack)
             {
-
+                //mSQLFile = new SQL_From_File();
+                //String connection_params = mSQLFile.ConnectionString;
                 //String connection_params = "Data Source=localhost;Database=PRG_310_NIGHT;User Id=root;Password=\"\";SSL Mode=None";
                 String connection_params = "Data Source=localhost;Database=flights;User Id=root;Password=\"\";SSL Mode=None";
 
@@ -147,7 +174,7 @@ namespace AirlineSurveys2
                     MySqlCommand cmd = new MySqlCommand(query, cnx);
                     using (MySqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        ///todays_flight_list.Rows
+                        int count = 1;
                         if (rdr.Read())
                         {
                             do
@@ -168,6 +195,13 @@ namespace AirlineSurveys2
 
                                 ListItem li = new ListItem();
                                 li.Text = entry;
+                                String background_color = "grey";
+                                if( count % 2 == 0 )
+                                {
+                                    background_color = "coral";
+                                }
+                                li.Attributes.CssStyle.Add("background-color", background_color);
+                                count++;
                                 ListBox1.Items.Add(li);
                             } while (rdr.Read());
 
@@ -184,6 +218,7 @@ namespace AirlineSurveys2
                 
                 for( int i = 0; i < 5; i++ )
                 {
+                    ListItem li;
                     mLists[(Survey_Criteria)i].Items.Add("No Opinion");
                     mLists[(Survey_Criteria)i].Items.Add("Poor");
                     mLists[(Survey_Criteria)i].Items.Add("Fair");
@@ -191,6 +226,9 @@ namespace AirlineSurveys2
                     mLists[(Survey_Criteria)i].Items.Add("Excellent");
                     mLists[(Survey_Criteria)i].SelectedIndexChanged += new EventHandler(HandleClick);
                 }
+
+                R_cleanliness.Items.Add("No Opinion");
+                //R_cleanliness.Se
             } // END OF ( if !Page.IsPostBack )
             else
             {
@@ -207,7 +245,7 @@ namespace AirlineSurveys2
 
         }
 
-
+        #region state_code
         protected void Page_PreInit(object sender, EventArgs e)
         {
             WriteToDebugDiv("Page_PreInit");
@@ -269,6 +307,8 @@ namespace AirlineSurveys2
             WriteToDebugDiv("Page_Unload");
             return;
         }
+
+        #endregion
 
     }
 }
