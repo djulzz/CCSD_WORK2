@@ -8,25 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace AirlineSurveys2
 {
-    public class ASP_Message_Handler
-    {
-        private String A;
-        private String B;
 
-        public ASP_Message_Handler()
-        {
-            A = "";
-            B = "";
-        }
-
-        public void Update( String Message )
-        {
-            A = B;
-            B = Message;
-        }
-
-
-    }
     enum Survey_Criteria
     {
         R_cleanliness = 0,
@@ -36,6 +18,11 @@ namespace AirlineSurveys2
         R_comfort = 4
     }
 
+    enum Qualifier
+    {
+        No_Opinion = 0,
+        Excellent
+    }
     public partial class Survey : System.Web.UI.Page
     {
         private MySqlConnection cnx;
@@ -82,7 +69,7 @@ namespace AirlineSurveys2
                 case "Page_PreLoad": { myColor = "orange"; } break;
                 case "Page_Load": { myColor = "darkorange"; } break;
                 case "Page_LoadComplete": { myColor = "orangered"; } break;
-                case "Page_PreRender": { myColor = "darkblueblue"; } break;
+                case "Page_PreRender": { myColor = "darkblue"; } break;
                 case "Page_PreRenderComplete": { myColor = "blue"; } break;
                 case "Page_Render": { myColor = "lightblue"; } break;
                 case "Page_SaveStateComplete": { myColor = "blueviolet"; } break;
@@ -94,7 +81,7 @@ namespace AirlineSurveys2
             ListItem li = new ListItem();
             li.Text = res;
             li.Attributes.CssStyle.Add("color", myColor);
-            lbDebug.Items.Add(res);
+            lbDebug.Items.Add( li );
 
             return;
         }

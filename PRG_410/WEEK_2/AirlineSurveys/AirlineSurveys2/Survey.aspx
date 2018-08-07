@@ -23,7 +23,7 @@
             <tr><td>Space</td>       <td><asp:RadioButtonList runat="server" SelectedIndexChanged="HandleClick" ID="R_space" RepeatDirection="Horizontal" AutoPostBack="true"></asp:RadioButtonList></td></tr>
             <tr><td>Comfort</td>     <td><asp:RadioButtonList runat="server" SelectedIndexChanged="HandleClick" ID="R_comfort"       RepeatDirection="Horizontal" AutoPostBack="true"></asp:RadioButtonList></td></tr>
         </table>
-
+        <asp:Button ID ="btnValidator" OnClick="ValidateReview" runat="server" Text="Submit Review"/>
         <div id="debug_div" runat="server">
                 <h1>State Information</h1>
                 <asp:ListBox ID = "lbDebug" runat="server" CssClass="asp_debug_listBox">
