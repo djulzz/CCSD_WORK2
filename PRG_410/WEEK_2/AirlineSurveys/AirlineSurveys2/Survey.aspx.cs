@@ -39,7 +39,6 @@ namespace AirlineSurveys2
     public partial class Survey : System.Web.UI.Page
     {
         private MySqlConnection cnx;
-        private String mMessage;
         private Dictionary<Survey_Criteria, RadioButtonList> mLists;
 
         public Survey() : base()
@@ -50,15 +49,54 @@ namespace AirlineSurveys2
         {
             set
             {
-                mMessage = value;
-                Session["message"] = mMessage;
+                Session["message_prev"] = Session["message"];
+                Session["message"] = value;
             }
 
             get
             {
-                mMessage = (String)Session["message"];
-                return mMessage;
+                return (String)Session["message_prev"];
             }
+        }
+
+        public String Time
+        {
+            get
+            {
+                String result = "";
+                DateTime dt = DateTime.Now;
+                result = dt.Hour + ":" + dt.Minute + ":" + dt.Second;
+                return result;
+            }
+        }
+
+        public void WriteToDebugDiv( String message )
+        {
+
+            String myColor = "white";
+            switch (message)
+            {
+                case "Page_PreInit": { myColor = "green"; } break;
+                case "Page_Init": { myColor = "darkolivegreen"; } break;
+                case "Page_InitComplete": { myColor = "yellow"; } break;
+                case "Page_PreLoad": { myColor = "orange"; } break;
+                case "Page_Load": { myColor = "darkorange"; } break;
+                case "Page_LoadComplete": { myColor = "orangered"; } break;
+                case "Page_PreRender": { myColor = "darkblueblue"; } break;
+                case "Page_PreRenderComplete": { myColor = "blue"; } break;
+                case "Page_Render": { myColor = "lightblue"; } break;
+                case "Page_SaveStateComplete": { myColor = "blueviolet"; } break;
+                
+                case "Page_Unload": { myColor = "red"; } break;
+                default: break;
+            }
+            String res = Time + " - " + message;
+            ListItem li = new ListItem();
+            li.Text = res;
+            li.Attributes.CssStyle.Add("color", myColor);
+            lbDebug.Items.Add(res);
+
+            return;
         }
 
         protected void WriteMessageToFooter( String message )
@@ -80,10 +118,14 @@ namespace AirlineSurveys2
             
             String RadioButtonList_selected = rbl.ID;
             String selection = rbl.SelectedItem.Text;
-            Message = RadioButtonList_selected + "\t" + selection;
-            int ba = 2;
+            String msg = RadioButtonList_selected + "\t" + selection;
+            Session["new_message"] = msg;
         }
 
+        public void Writeback_SurveySelection( )
+        {
+            lbl_survey_current_selection.Text = (String)Session["new_message"];
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             mLists = new Dictionary<Survey_Criteria, RadioButtonList>();
@@ -174,6 +216,72 @@ namespace AirlineSurveys2
 
 
             WriteMessageToFooter(Message);
+            WriteToDebugDiv("Page_Load");
+
         }
+
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_PreInit");
+            return;
+        }
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_Init");
+            return;
+        }
+
+        protected void Page_InitComplete(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_InitComplete");
+            return;
+        }
+
+        protected void Page_PreLoad(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_PreLoad");
+            return;
+        }
+
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_LoadComplete");
+            Writeback_SurveySelection();
+            return;
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_PreRender");
+            return;
+        }
+
+        protected void Page_PreRenderComplete(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_PreRenderComplete");
+            return;
+        }
+
+        protected void Page_SaveStateComplete(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_SaveStateComplete");
+            return;
+        }
+
+        protected void Page_Render(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_Render");
+            return;
+        }
+
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            WriteToDebugDiv("Page_Unload");
+            return;
+        }
+
     }
 }

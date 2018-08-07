@@ -85,6 +85,33 @@ namespace AirlineSurveys2 {
         protected global::System.Web.UI.WebControls.RadioButtonList R_comfort;
         
         /// <summary>
+        /// debug_div control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl debug_div;
+        
+        /// <summary>
+        /// lbDebug control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbDebug;
+        
+        /// <summary>
+        /// lbl_survey_current_selection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_survey_current_selection;
+        
+        /// <summary>
         /// Label_Feeback control.
         /// </summary>
         /// <remarks>

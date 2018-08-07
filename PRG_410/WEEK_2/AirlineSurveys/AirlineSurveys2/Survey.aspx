@@ -24,8 +24,16 @@
             <tr><td>Comfort</td>     <td><asp:RadioButtonList runat="server" SelectedIndexChanged="HandleClick" ID="R_comfort"       RepeatDirection="Horizontal" AutoPostBack="true"></asp:RadioButtonList></td></tr>
         </table>
 
-        
+        <div id="debug_div" runat="server">
+                <h1>State Information</h1>
+                <asp:ListBox ID = "lbDebug" runat="server" CssClass="asp_debug_listBox">
+                </asp:ListBox>
+                <h1>Survey Click Current Value</h1>
+                <asp:Label ID = "lbl_survey_current_selection" runat="server"></asp:Label>
+        </div>
     </form>
+
+
     <footer>
         <asp:Label ID="Label_Feeback" runat="server"></asp:Label>
     </footer>

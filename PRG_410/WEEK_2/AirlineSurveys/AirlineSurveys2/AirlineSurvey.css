@@ -14,3 +14,24 @@ footer.absolute {
 .asp_ListBox {
     border: 3px solid #8AC007;
 }
+
+.asp_debug_listBox {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    color:or
+}
+
+#debug_div {
+    width: 50%;
+    text-align: left;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    text-align: right;
+}
+
+
+#debug_div h1 {
+    color:yellow;
+}
