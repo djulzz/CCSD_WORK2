@@ -1,0 +1,16 @@
+﻿body {
+    background-color: black;
+    color: aqua;
+}
+
+
+footer.absolute {
+    position: absolute;
+    bottom: 10px;
+    width: 50%;
+    border: 3px solid #8AC007;
+}
+
+.asp_ListBox {
+    border: 3px solid #8AC007;
+}

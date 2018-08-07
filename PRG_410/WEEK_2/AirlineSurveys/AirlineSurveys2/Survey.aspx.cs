@@ -8,41 +8,94 @@ using MySql.Data.MySqlClient;
 
 namespace AirlineSurveys2
 {
+    public class ASP_Message_Handler
+    {
+        private String A;
+        private String B;
+
+        public ASP_Message_Handler()
+        {
+            A = "";
+            B = "";
+        }
+
+        public void Update( String Message )
+        {
+            A = B;
+            B = Message;
+        }
+
+
+    }
+    enum Survey_Criteria
+    {
+        R_cleanliness = 0,
+        R_friendly = 1,
+        R_noise = 2,
+        R_space = 3,
+        R_comfort = 4
+    }
+
     public partial class Survey : System.Web.UI.Page
     {
         private MySqlConnection cnx;
+        private String mMessage;
+        private Dictionary<Survey_Criteria, RadioButtonList> mLists;
+
+        public Survey() : base()
+        {
+
+        }
+        public String Message
+        {
+            set
+            {
+                mMessage = value;
+                Session["message"] = mMessage;
+            }
+
+            get
+            {
+                mMessage = (String)Session["message"];
+                return mMessage;
+            }
+        }
+
+        protected void WriteMessageToFooter( String message )
+        {
+            Label_Feeback.Text = message;
+            return;
+        }
 
         protected void HandleClick(object sender, EventArgs e)
         {
-            RadioButtonList rbl = (RadioButtonList)sender;
-            int ba = 2;
-            switch( rbl.ID )
-            {
-                case "R_friendly":
-                {
-                   String selection = rbl.SelectedItem.Text;
-                   Session["R_friendly"] = selection;
-                   //Response.Write(selection);
-                   //String s = (String)Session["R_friendly"];
-                } break;
-                case "R_space": {; } break;
-                case "R_comfort": {; } break;
-                case "R_cleanliness": {; } break;
-                case "R_noise": {;  } break;
-            }
-            //Response.Write( R1.SelectedItem.Text );
-            //Button b = (Button)sender;
-            int a = 0;
-            //if (b.ID == "f0")
+            //if( sender.ToString() != "System.Web.UI.WebControls.RadioButtonList" )
             //{
-            //    Response.Write("You Clicked it!");
+            //    // This is absolutely unnecessary, but guarantees that the
+            //    // sender is always
+            //    return;
             //}
+            
+            RadioButtonList rbl = (RadioButtonList)sender;
+            
+            String RadioButtonList_selected = rbl.ID;
+            String selection = rbl.SelectedItem.Text;
+            Message = RadioButtonList_selected + "\t" + selection;
+            int ba = 2;
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            mLists = new Dictionary<Survey_Criteria, RadioButtonList>();
+            mLists.Add(Survey_Criteria.R_cleanliness, R_cleanliness);
+            mLists.Add(Survey_Criteria.R_friendly, R_friendly);
+            mLists.Add(Survey_Criteria.R_noise, R_noise);
+            mLists.Add(Survey_Criteria.R_space, R_space);
+            mLists.Add(Survey_Criteria.R_comfort, R_comfort);
 
             if (!Page.IsPostBack)
             {
+
                 //String connection_params = "Data Source=localhost;Database=PRG_310_NIGHT;User Id=root;Password=\"\";SSL Mode=None";
                 String connection_params = "Data Source=localhost;Database=flights;User Id=root;Password=\"\";SSL Mode=None";
 
@@ -54,13 +107,13 @@ namespace AirlineSurveys2
                 }
                 catch (Exception ex)
                 {
-                    Response.Write("Error while opening the connection - Reason = " + ex.Message);
+                    Message = "Error while opening the connection -Reason = " + ex.Message;
                     return;
                 }
 
                 if (cnx.State == System.Data.ConnectionState.Open)
                 {
-                    Response.Write("Connection Successful");
+                    Message = "Connection Successful";
                     String query = "SELECT * FROM details";
                     MySqlCommand cmd = new MySqlCommand(query, cnx);
                     using (MySqlDataReader rdr = cmd.ExecuteReader())
@@ -92,38 +145,35 @@ namespace AirlineSurveys2
 
                         }
                     }
-                }
+                } // END OF IF THE CONNECTION IS OPEN
                 else
                 {
-                    Response.Write("Connection Un - successful");
+                    Message = "Connection Un - successful";
                     Session["cnx"] = cnx;
                 }
 
-                List<RadioButtonList> lst = new List<RadioButtonList>();
-                lst.Add(R_friendly);
-                lst.Add(R_space);
-                lst.Add(R_comfort);
-                lst.Add(R_cleanliness);
-                lst.Add(R_noise);
-
+                
                 for( int i = 0; i < 5; i++ )
                 {
-                    lst[i].Items.Add("No Opinion");
-                    lst[i].Items.Add("Poor");
-                    lst[i].Items.Add("Fair");
-                    lst[i].Items.Add("Good");
-                    lst[i].Items.Add("Excellent");
-                    lst[i].SelectedIndexChanged += new EventHandler(HandleClick);
+                    mLists[(Survey_Criteria)i].Items.Add("No Opinion");
+                    mLists[(Survey_Criteria)i].Items.Add("Poor");
+                    mLists[(Survey_Criteria)i].Items.Add("Fair");
+                    mLists[(Survey_Criteria)i].Items.Add("Good");
+                    mLists[(Survey_Criteria)i].Items.Add("Excellent");
+                    mLists[(Survey_Criteria)i].SelectedIndexChanged += new EventHandler(HandleClick);
                 }
-            } else // if the page is being re - posted
+            } // END OF ( if !Page.IsPostBack )
+            else
             {
-                String s = (String)Session["R_friendly"];
-                Label_Feeback.Text = s;
-
+                mLists[Survey_Criteria.R_friendly].SelectedIndexChanged     += new EventHandler(HandleClick);
+                mLists[Survey_Criteria.R_space].SelectedIndexChanged        += new EventHandler(HandleClick);
+                mLists[Survey_Criteria.R_comfort].SelectedIndexChanged      += new EventHandler(HandleClick);
+                mLists[Survey_Criteria.R_cleanliness].SelectedIndexChanged  += new EventHandler(HandleClick);
+                mLists[Survey_Criteria.R_noise].SelectedIndexChanged        += new EventHandler(HandleClick);
             }
 
-            R_friendly.SelectedIndexChanged += new EventHandler(HandleClick);
 
+            WriteMessageToFooter(Message);
         }
     }
 }
