@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AirlineSurveys3 {
+namespace AirLineSurvey {
     
     
-    public partial class Tutorial2 {
+    public partial class Default {
         
         /// <summary>
         /// form1 control.
@@ -22,13 +22,13 @@ namespace AirlineSurveys3 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// FlightSelection control.
+        /// ListBox_Flights control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox FlightSelection;
+        protected global::System.Web.UI.WebControls.ListBox ListBox_Flights;
         
         /// <summary>
         /// R_Noise control.
@@ -40,13 +40,13 @@ namespace AirlineSurveys3 {
         protected global::System.Web.UI.WebControls.RadioButtonList R_Noise;
         
         /// <summary>
-        /// R_Cleanliness control.
+        /// R_Space control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList R_Cleanliness;
+        protected global::System.Web.UI.WebControls.RadioButtonList R_Space;
         
         /// <summary>
         /// R_Comfort control.
@@ -58,39 +58,21 @@ namespace AirlineSurveys3 {
         protected global::System.Web.UI.WebControls.RadioButtonList R_Comfort;
         
         /// <summary>
-        /// R_Friendliness control.
+        /// R_Clean control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList R_Friendliness;
+        protected global::System.Web.UI.WebControls.RadioButtonList R_Clean;
         
         /// <summary>
-        /// R_Space control.
+        /// R_Friendly control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList R_Space;
-        
-        /// <summary>
-        /// Submit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Submit;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.RadioButtonList R_Friendly;
     }
 }

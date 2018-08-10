@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1979C3A-48AD-423D-838B-DE19197F72E6}</ProjectGuid>
+    <ProjectGuid>{600C07CE-8F52-4A02-81AB-41C3950A166B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AirlineSurveys2</RootNamespace>
-    <AssemblyName>AirlineSurveys2</AssemblyName>
+    <RootNamespace>AirLineSurvey</RootNamespace>
+    <AssemblyName>AirLineSurvey</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -78,7 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Project_UML_Diagram.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -87,41 +86,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AirlineSurvey.css" />
-    <Content Include="Survey.aspx" />
-    <Content Include="Tutorial2.aspx" />
-    <Content Include="Tutorial.aspx" />
-    <Content Include="Tutorial2.css" />
+    <Content Include="Default.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Survey.aspx.cs">
-      <DependentUpon>Survey.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Survey.aspx.designer.cs">
-      <DependentUpon>Survey.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Survey_Criteria.cs" />
-    <Compile Include="Tutorial2.aspx.cs">
-      <DependentUpon>Tutorial2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Tutorial2.aspx.designer.cs">
-      <DependentUpon>Tutorial2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Tutorial.aspx.cs">
-      <DependentUpon>Tutorial.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Tutorial.aspx.designer.cs">
-      <DependentUpon>Tutorial.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\WEEK_1\Tutorial_Juergen\Tutorial_Juergen\API_SQL_From_File.csproj">
-      <Project>{e5c6dcf6-244c-4025-b497-b858c8d1fa57}</Project>
-      <Name>API_SQL_From_File</Name>
-    </ProjectReference>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -136,9 +112,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2505</DevelopmentServerPort>
+          <DevelopmentServerPort>1913</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2505/</IISUrl>
+          <IISUrl>http://localhost:1913/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

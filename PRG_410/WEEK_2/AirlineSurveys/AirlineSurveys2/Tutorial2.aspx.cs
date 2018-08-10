@@ -5,17 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using NS1;
 
 namespace AirlineSurveys3
 {
-    public enum Survey_Criteria
-    {
-        R_cleanliness   = 0,
-        R_friendly      = 1,
-        R_noise         = 2,
-        R_space         = 3,
-        R_comfort       = 4
-    }
+
 
     public enum Qualifier
     {
@@ -33,8 +27,13 @@ namespace AirlineSurveys3
     public partial class Tutorial2 : System.Web.UI.Page
     {
         private static String SURVEY_READY_FOR_SUBMISSION = "SURVEY_READY_FOR_SUBMISSION";
+        private static int NUMBER_OF_RADIOBUTTON_LISTS = 5;
+        private static String SURVEY_DATA = "survey";
         private MySqlConnection mConnection;
         private Review_Data mSurveyData;
+        private String mLastError;
+
+        
 
         public Survey_Criteria StringToEnum( String review )
         {
@@ -69,12 +68,16 @@ namespace AirlineSurveys3
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            mSurveyData = new Review_Data();
+
+            
 
             if ( !Page.IsPostBack ) // if the page is loading for the first time
                                    // do the GUI initialization there
 
             {
+                mSurveyData = new Review_Data();
+                Session[SURVEY_DATA ] = mSurveyData;
+
                 String connection_params = "Data Source=localhost;Database=flights;User Id=root;Password=\"\";SSL Mode=None";
                 mConnection = new MySqlConnection(connection_params );
                 mConnection.Open();
@@ -123,25 +126,40 @@ namespace AirlineSurveys3
                 lst.Add(R_Noise);
                 lst.Add(R_Space);
 
-                for( int i = 0; i < 5; i++ )
+                for( int i = 0; i < NUMBER_OF_RADIOBUTTON_LISTS; i++ )
                 {
                     lst[i].Items.Add("No Opinion");
                     lst[i].Items.Add("Poor");
                     lst[i].Items.Add("Fair");
                     lst[i].Items.Add("Good");
                     lst[i].Items.Add("Excellent");
+                    //lst[i].SelectedIndexChanged += new EventHandler(Handle_Click);
                 }
             }
         }
 
         protected void Handle_Click(object sender, EventArgs e)
         {
+            mSurveyData = (Review_Data)Session["survey"];
             RadioButtonList rbl = (RadioButtonList)sender;
             String RadioButtonListID = rbl.ID; // Comfort, Noise, etc...
+            int a = 0;
             String selection = rbl.SelectedItem.Text; // Poor, Fair, etc..
             Survey_Criteria criteria = StringToEnum(RadioButtonListID);
             Qualifier q = StringToQualifier(selection);
-            mSurveyData.Add(criteria, q);
+            try
+            {
+                mSurveyData.Add(criteria, q);
+            } catch( Exception ex ) {; }
+
+            ListItem li = FlightSelection.SelectedItem;
+            String msg = "";
+            if( li != null )
+            {
+                msg = li.Text;
+                mLastError = msg;
+            }
+            Session["survey"] = mSurveyData;
             if (mSurveyData.Count == 5) // we are ready to submit our data
                 Session[SURVEY_READY_FOR_SUBMISSION] = true;
             else
@@ -153,7 +171,7 @@ namespace AirlineSurveys3
             bool submit_state = (bool)Session[SURVEY_READY_FOR_SUBMISSION];
             if( submit_state == true )
             {
-                int rating_comfort = (int)mSurveyData[Survey_Criteria.R_cleanliness];
+                int rating_comfort = (int)mSurveyData[Survey_Criteria.R_comfort];
                 int rating_noise = (int)mSurveyData[Survey_Criteria.R_noise];
                 int rating_friendly = (int)mSurveyData[Survey_Criteria.R_friendly];
                 int rating_clean = (int)mSurveyData[Survey_Criteria.R_cleanliness];
@@ -169,6 +187,15 @@ namespace AirlineSurveys3
                 // last step, clear survey data
                 mSurveyData.Clear();
             }
+        }
+
+        protected void Page_LoadComplete( Object sender, EventArgs args )
+        {
+            if (!String.IsNullOrEmpty(mLastError))
+            {
+                Label1.Text = mLastError;
+            }
+            return;
         }
     }
 }

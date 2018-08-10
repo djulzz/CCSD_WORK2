@@ -20,6 +20,7 @@ create table survey
 (
 	review_number int primary key auto_increment,
 	flight_number int not null,
+	airline_code char( 2 ) not null,
 	friendliness int not null,
 	space int not null,
 	confort int not null,

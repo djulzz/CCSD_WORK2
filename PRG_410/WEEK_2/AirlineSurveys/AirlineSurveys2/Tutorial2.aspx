@@ -17,6 +17,9 @@
         Friendliness&nbsp;<asp:RadioButtonList ID ="R_Friendliness" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" OnSelectedIndexChanged="Handle_Click"></asp:RadioButtonList>
         Space&nbsp;<asp:RadioButtonList ID ="R_Space" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" OnSelectedIndexChanged="Handle_Click"></asp:RadioButtonList>
         <asp:Button ID="Submit" runat="server" OnClick="Submit_Review" Text="Submit Review" />
+        <p>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        </p>
     </form>
 </body>
 </html>
