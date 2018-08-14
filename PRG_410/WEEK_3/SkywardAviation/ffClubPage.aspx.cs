@@ -18,7 +18,7 @@ public partial class _Default : System.Web.UI.Page
         else
 
         {
-            SqlConnection dbConnection = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\djulzz\\Documents\\GitHub\\CCSD_WORK2\\PRG_410\\WEEK_3\\SkywardAviation\\App_Data\\SkywardAviation.mdf;Integrated Security = True");
+            SqlConnection dbConnection = new SqlConnection(ConnectionString.Value);
             dbConnection.Open();
 
             try {

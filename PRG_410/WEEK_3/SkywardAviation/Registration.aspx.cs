@@ -26,7 +26,7 @@ public partial class _Default : System.Web.UI.Page
         if (Page.IsPostBack && enrollmentForm.ActiveViewIndex == 3)
         {
          //SqlConnection dbConnection = new SqlConnection("Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = "C:\Users\djulzz\Documents\GitHub\CCSD_WORK2\PRG_410\WEEK_3\STU dataFiles\Chapter.09\Chapter\SkywardAviation\App_Data\SkywardAviation.mdf"; Integrated Security = True
-         SqlConnection dbConnection = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\djulzz\\Documents\\GitHub\\CCSD_WORK2\\PRG_410\\WEEK_3\\SkywardAviation\\App_Data\\SkywardAviation.mdf;Integrated Security = True");
+         SqlConnection dbConnection = new SqlConnection(ConnectionString.Value);
 
             try
 

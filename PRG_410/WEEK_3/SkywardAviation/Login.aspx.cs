@@ -15,7 +15,7 @@ public partial class _Default : System.Web.UI.Page
         if (Page.IsPostBack)
 
         {
-            SqlConnection dbConnection = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\djulzz\\Documents\\GitHub\\CCSD_WORK2\\PRG_410\\WEEK_3\\SkywardAviation\\App_Data\\SkywardAviation.mdf;Integrated Security = True");
+            SqlConnection dbConnection = new SqlConnection(ConnectionString.Value);
             //SqlConnection dbConnection = new SqlConnection("Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Course Technology\\0324 - 2\\Chapter.09\\Chapter\\SkywardAviation\\App_Data\\SkywardAviation.mdf; Integrated Security = True; User Instance = True");
             try
 
