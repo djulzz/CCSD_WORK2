@@ -202,6 +202,379 @@
                                                             <td>
                                                                 <form id="form1" runat="server">
                                                                 <div>
+                                                                    <asp:Wizard ID="profileForm" runat="server" BackColor="#F7F6F3" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em">
+                                                                        <HeaderStyle BackColor="#5D7B9D" BorderStyle="Solid" Font-Bold="True" Font-Size="0.9em" ForeColor="White" HorizontalAlign="Left" />
+                                                                        <NavigationButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
+                                                                        <SideBarButtonStyle BorderWidth="0px" Font-Names="Verdana" ForeColor="White" />
+                                                                        <SideBarStyle BackColor="#7C6F57" BorderWidth="0px" Font-Size="0.9em" VerticalAlign="Top" />
+                                                                        <StepStyle BorderWidth="0px" ForeColor="#5D7B9D" />
+                                                                        <WizardSteps>
+                                                                            <asp:WizardStep runat="server" StepType="Start" title="Account Details">
+                                                                            <h3>Account Details</h3>
+
+                                                                            <p>Last name<br />
+                                                                                <asp:TextBox ID="lastName" runat="server" Width="265" /><br />
+
+                                                                                    First name<br />
+
+                                                                                <asp:TextBox ID="firstName" runat="server"
+
+                                                                                    Width="265" /><br />
+
+                                                                                    Telephone<br />
+
+                                                                                <asp:TextBox ID="telephone" runat="server"
+
+                                                                                    Width="265" /><br />
+
+                                                                                    E-mail<br />
+
+                                                                                <asp:TextBox ID="email" runat="server"
+
+                                                                                    Width="265" /><br />
+
+                                                                                    Confirm e-mail<br />
+
+                                                                                <asp:TextBox ID="confirmEmail" runat="server"
+
+                                                                                    Width="265" /><br />
+
+                                                                                    Password<br />
+
+                                                                                <asp:TextBox ID="password" runat="server"
+
+                                                                                    Width="265" TextMode="Password" /><br />
+
+                                                                                    Confirm password<br />
+
+                                                                                <asp:TextBox ID="confirmPassword"
+
+                                                                                    runat="server" Width="265"
+
+                                                                                    TextMode="Password" />
+
+                                                                                <asp:HiddenField ID="hiddenPassword"
+
+                                                                                    runat="server" /></p>
+
+                                                                            </asp:WizardStep>
+                                                                            <asp:WizardStep runat="server" StepType="Step" title="Billing Information">
+
+                                                                            <h3>
+
+                                                                                Billing Information</h3>
+
+                                                                            <table Width="100%" border="0" cellspacing="0"
+
+                                                                            cellpadding="0">
+
+                                                                                <tr><td><p>Card type<br />
+
+                                                                                    <asp:DropDownList ID="creditcard" runat="server">
+
+                                                                                        <asp:ListItem></asp:ListItem>
+                                                                                        <asp:ListItem>Visa</asp:ListItem>
+                                                                                        <asp:ListItem>Mastercard</asp:ListItem>
+                                                                                        <asp:ListItem>Diners Club</asp:ListItem>
+
+                                                                                        <asp:ListItem>American Express</asp:ListItem>
+
+                                                                                    </asp:DropDownList></p></td>
+
+                                                                                    <td><p>Expiration date<br />
+
+                                                                                           <asp:DropDownList ID="expireMonth"
+
+                                                                                               runat="server">
+
+                                                                                               <asp:ListItem></asp:ListItem>
+
+                                                                                               <asp:ListItem Value="01">01
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="02">02
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="03">03
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="04">04
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="05">05
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="06">06
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="07">07
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="08">08
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="09">09
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="10">10
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="11">11
+
+                                                                                                   </asp:ListItem>
+
+                                                                                               <asp:ListItem Value="12">12
+
+                                                                                                   </asp:ListItem>
+
+                                                                                            </asp:DropDownList>
+
+                                                                                            <asp:DropDownList ID="expireYear"
+
+                                                                                                runat="server">
+
+                                                                                                <asp:ListItem></asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2008">
+
+                                                                                                   2008</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2009">
+
+                                                                                                   2009</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2010">
+
+                                                                                                   2010</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2011">
+
+                                                                                                   2011</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2012">
+
+                                                                                                   2012</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2013">
+
+                                                                                                   2013</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2014">
+
+                                                                                                   2014</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2015">
+
+                                                                                                   2015</asp:ListItem>
+                                                                                                <asp:ListItem Value="2016">
+
+                                                                                                   2016</asp:ListItem>
+
+                                                                                                <asp:ListItem Value="2017">
+
+                                                                                                   2017</asp:ListItem>
+
+                                                                                            </asp:DropDownList></p>
+
+                                                                                     </td>
+
+                                                                                </tr></table>
+
+                                                                           <p>
+
+                                                                                Card number<br />
+
+                                                                                <asp:TextBox ID="cardnumber" runat="server"
+
+                                                                                   Width="265" TextMode="SingleLine" /><br />
+
+                                                                                   Cardholder name<br />
+
+                                                                                <asp:TextBox ID="cardholder" runat="server"
+
+                                                                                   Width="265" TextMode="SingleLine" /><br />
+
+                                                                                   Address<br />
+
+                                                                                <asp:TextBox ID="address" runat="server"
+
+                                                                                   Width="265" TextMode="SingleLine" /><br />
+
+                                                                                   City<br />
+
+                                                                                <asp:TextBox ID="city" runat="server"
+
+                                                                                   Width="265" TextMode="SingleLine" /><br />
+
+                                                                                   State<br />
+
+                                                                                <asp:TextBox ID="state" runat="server"
+
+                                                                                   Width="265" TextMode="SingleLine" /><br />
+
+                                                                                   Zip<br />
+
+                                                                                <asp:TextBox ID="zip" runat="server"
+
+                                                                                   Width="265" TextMode="SingleLine" /><br />
+
+                                                                            </p>
+                                                                            </asp:WizardStep>
+                                                                            <asp:WizardStep runat="server" StepType="Finish" Title="Travel Preferences">
+
+                                                                            <h3>
+
+                                                                                Travel Preferences</h3>
+
+                                                                            <p>
+
+                                                                                Traveler type<br />
+
+                                                                                <asp:DropDownList ID="travelerType"
+
+                                                                                    runat="server">
+
+                                                                                    <asp:ListItem></asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Adult">Adult
+
+                                                                                        </asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Child (2-11)">
+
+                                                                                        Child (2-11)</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Infant (under 2)">
+
+                                                                                        Infant (under 2)</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Senior (65+)">
+
+                                                                                        Senior (65+)</asp:ListItem>
+
+                                                                                </asp:DropDownList><br />
+
+                                                                                Home airport<br />
+
+                                                                                <asp:TextBox ID="homeAirport" runat="server"
+
+                                                                                    Width="265" TextMode="SingleLine" /><br />
+
+                                                                                Service class<br />
+
+                                                                                <asp:DropDownList ID="serviceClass"
+
+                                                                                    runat="server">
+
+                                                                                    <asp:ListItem></asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Economy
+
+                                                                                        (lowest available)"> Economy (lowest)
+
+                                                                                        </asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Economy
+
+                                                                                        (lowest refundable)"> Economy
+
+                                                                                        (refundable)</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Business
+
+                                                                                        (lowest available)">Business
+
+                                                                                        (lowest)</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="Business
+
+                                                                                        (lowest refundable)">Business
+
+                                                                                        (refundable)</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="First
+
+                                                                                        (lowest available)">First
+
+                                                                                        (lowest)</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="First
+
+                                                                                        (lowest refundable)">First
+
+                                                                                        (refundable)</asp:ListItem>
+
+                                                                                </asp:DropDownList><br />
+
+                                                                                Seat preference<br />
+
+                                                                                <asp:DropDownList ID="seatPreference"
+
+                                                                                    runat="server">
+
+                                                                                    <asp:ListItem></asp:ListItem>
+
+                                                                                    <asp:ListItem Value="aisle">aisle
+
+                                                                                        </asp:ListItem>
+
+                                                                                    <asp:ListItem Value="window">window
+
+                                                                                        </asp:ListItem>
+
+                                                                                </asp:DropDownList><br />
+
+                                                                                Meal request<br />
+
+                                                                                <asp:DropDownList ID="mealRequest"
+
+                                                                                        runat="server">
+
+                                                                                    <asp:ListItem></asp:ListItem>
+
+                                                                                    <asp:ListItem Value="standard">
+
+                                                                                        standard</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="diabetic">
+
+                                                                                        diabetic</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="fruit ">
+
+                                                                                        fruit </asp:ListItem>
+
+                                                                                    <asp:ListItem Value="kosher">
+
+                                                                                        kosher</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="low sodium">
+
+                                                                                        low sodium</asp:ListItem>
+
+                                                                                    <asp:ListItem Value="vegetarian">
+
+                                                                                        vegetarian</asp:ListItem>
+
+                                                                                </asp:DropDownList></p>
+                                                                            </asp:WizardStep>
+                                                                            <asp:WizardStep runat="server" StepType="Complete" Title="Profile Updated">
+                                                                                <asp:Literal ID="updateOK" runat="server" />
+                                                                            </asp:WizardStep>
+                                                                        </WizardSteps>
+                                                                    </asp:Wizard>
+                                                                    <asp:Literal ID="updateErrors" runat="server" />
+                                                                    <br />
                                                                 </div>
                                                                 </form>
                                                             </td>

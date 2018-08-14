@@ -203,6 +203,18 @@
                                                             <td>
                                                                 <form id="profileForm" runat="server">
                                                                 <div>
+
+                                                                    <p>
+                                                                        <strong>Customer Name:</strong>
+                                                                        <asp:Literal ID="firstName" runat="server" />
+                                                                        <asp:Literal ID="lastName" runat="server" /><br />
+                                                                        <strong>Frequent Flyer #:</strong>
+                                                                        <asp:Literal ID="flyerIDValue" runat="server" /><br />
+                                                                    </p>
+                                                                    <p>
+                                                                        <a href="ContactInfo.aspx">Update Contact Info</a><br />
+                                                                        <asp:LinkButton ID="logout" runat="server">Logout</asp:LinkButton>
+                                                                    </p>
                                                                 </div>
                                                                 </form>
                                                             </td>

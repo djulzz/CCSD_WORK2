@@ -185,15 +185,10 @@
                                                                         
                                                                         <asp:View ID="baseProfile" runat="server">
 
-                                                                            <h3>
-
-                                                                                Account Details</h3>
+                                                                            <h3>Account Details</h3>
 
                                                                             <p>Last name<br />
-
-                                                                                <asp:TextBox ID="lastName" runat="server"
-
-                                                                                    Width="265" /><br />
+                                                                                <asp:TextBox ID="lastName" runat="server" Width="265" /><br />
 
                                                                                     First name<br />
 

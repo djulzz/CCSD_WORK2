@@ -36,7 +36,7 @@ public partial class _Default : System.Web.UI.Page
 
                 SqlCommand sqlCommand = new SqlCommand(
 
-                    @"INSERT INTO FrequentFlyers (last, first, phone, email) VALUES("
+                    @"INSERT INTO FrequentFlyers (last, first, phone, email, password) VALUES("
 
                     //@"INSERT INTO FrequentFlyers (last, first,
                     //phone, email, password, cardType,
@@ -49,8 +49,9 @@ public partial class _Default : System.Web.UI.Page
                     + "',"
                     + "'" + telephone.Text + "',"
                     + "'" + email.Text
+                    + "',"
+                    + "'" + hiddenPassword.Value
                     //+ "',"
-                    //+ "'" + hiddenPassword.Value + "',"
                     //+ "'" + creditcard.Text + "',"
                     //+ "'" + expireMonth.Text + "',"
                     //+ "'" + expireYear.Text + "',"

@@ -203,6 +203,20 @@
                                                             <td>
                                                                 <form id="loginForm" runat="server">
                                                                 <div>
+                                                                    
+                                                                    <p>
+                                                                        Frequent flyer ID<br />
+                                                                        <asp:TextBox ID="account" runat="server" Width="200px"></asp:TextBox>
+                                                                    </p>
+                                                                    <p>
+                                                                        Password<br />
+                                                                        <asp:TextBox ID="password" runat="server" Width="200px" TextMode="Password"></asp:TextBox>
+                                                                    </p>
+
+                                                                        <asp:Literal ID="badLogin" runat="server"></asp:Literal>
+                                                                    <p>
+                                                                        <asp:Button ID="Login" runat="server" Text="Login" />
+                                                                    </p>
                                                                 </div>
                                                                 </form>
                                                                 <h2>
