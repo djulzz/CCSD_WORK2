@@ -10,10 +10,14 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        if (Request.QueryString["flyerID"] == null)
-
+        if( Profile.flyerID == 0 )
+        {
             Response.Redirect("Login.aspx");
+        }
+
+        //if (Request.Cookies["flyerID"]== null)
+
+        //    Response.Redirect("Login.aspx");
 
         else
 
@@ -22,7 +26,10 @@ public partial class _Default : System.Web.UI.Page
             dbConnection.Open();
 
             try {
-                SqlCommand sqlCommand = new SqlCommand( "SELECT flyerID, first, last FROM FrequentFlyers WHERE flyerID = " + Request.QueryString["flyerID"], dbConnection);
+                SqlCommand sqlCommand = new SqlCommand( "SELECT flyerID, first, last FROM FrequentFlyers WHERE flyerID = " 
+                    //+ Request.QueryString["flyerID"],
+                    + Request.Cookies["flyerID"].Value,
+                    dbConnection);
                 SqlDataReader userInfo = sqlCommand.ExecuteReader();
                 if (userInfo.Read()) {
                     flyerIDValue.Text = userInfo["flyerID"].ToString();
@@ -37,5 +44,13 @@ public partial class _Default : System.Web.UI.Page
             }
             dbConnection.Close();
         }
+    }
+
+    protected void logout_Click(object sender, EventArgs e)
+    {
+        Profile.flyerID = 0;
+        //Response.Cookies["flyerID"].Expires = DateTime.Now.AddDays(-1);
+        Response.Redirect("Login.aspx");
+
     }
 }

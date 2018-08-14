@@ -212,11 +212,11 @@
                                                                         <asp:Literal ID="flyerIDValue" runat="server" /><br />
                                                                     </p>
                                                                     <p>
-<%--                                                                        <a href="ContactInfo.aspx">Update Contact Info</a><br />--%>
-                                                                        <%Response.Write("<a href='ContactInfo.aspx?flyerID=" + Request.QueryString["flyerID"] + "'>Update Contact Info" + "</a>")%>
-<%--                                                                        <a href=<% Response.Write("ContactInfo.aspx?flyerID="+ Request.QueryString["flyerID"]); %>>Update Contact Info</a>--%>
 
-                                                                        <asp:LinkButton ID="logout" runat="server">Logout</asp:LinkButton>
+                                                                        <a href="ContactInfo.aspx">Update Contact Info</a>
+<%--                                                                        <%Response.Write("<a href='ContactInfo.aspx?flyerID=" + Request.Cookies["flyerID"]+ "'>Update Contact Info" + "</a>");%>--%>
+
+                                                                        <asp:LinkButton ID="logout" runat="server" OnClick="logout_Click">Logout</asp:LinkButton>
                                                                     </p>
                                                                 </div>
                                                                 </form>

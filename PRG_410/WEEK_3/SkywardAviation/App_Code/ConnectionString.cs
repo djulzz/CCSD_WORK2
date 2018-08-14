@@ -19,7 +19,9 @@ public class ConnectionString
     {
         get
         {
-            return "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\djulzz\\Documents\\GitHub\\CCSD_WORK2\\PRG_410\\WEEK_3\\SkywardAviation\\App_Data\\SkywardAviation.mdf;Integrated Security = True";
+           // Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\\Users\djulzz\Documents\GitHub\CCSD_WORK2\PRG_410\WEEK_3\SkywardAviation\App_Data\SkywardAviation.mdf; Integrated Security = True
+            //Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\djulzz\Documents\GitHub\CCSD_WORK2\PRG_410\WEEK_3\SkywardAviation\App_Data\SkywardAviation.mdf; Integrated Security = True
+            return "Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename = C:\\Users\\djulzz\\Documents\\GitHub\\CCSD_WORK2\\PRG_410\\WEEK_3\\SkywardAviation\\App_Data\\SkywardAviation.mdf;Integrated Security = True";
         }
     }
 }

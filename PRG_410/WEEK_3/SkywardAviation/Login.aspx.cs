@@ -25,7 +25,16 @@ public partial class _Default : System.Web.UI.Page
                 SqlCommand sqlCommand = new SqlCommand( "SELECT flyerID, first, last, password FROM FrequentFlyers WHERE flyerID = "  + Convert.ToInt16(account.Text) + " AND password = '" + password.Text + "'", dbConnection);
                 SqlDataReader curUser = sqlCommand.ExecuteReader();
                 if (curUser.Read())
-                    Response.Redirect( "ffClubPage.aspx?flyerID=" + curUser["flyerID"]);
+                {
+
+                    Profile.flyerID = (int)curUser["flyerID"];
+                    //HttpCookie flyerIDObject = new HttpCookie("flyerID");
+                    //flyerIDObject.Value = curUser["flyerID"].ToString();
+                    //flyerIDObject.Expires = DateTime.Now.AddDays(30);
+                    //Response.Cookies.Add(flyerIDObject);
+                    Response.Redirect("ffClubPage.aspx");
+                    //Response.Redirect("ffClubPage.aspx?flyerID=" + curUser["flyerID"]);
+                }
                 else
                     badLogin.Text = "<p style='color:red'> < strong > Incorrect ID or password. < strong ></ p > ";
 

@@ -11,7 +11,8 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Request.QueryString["flyerID"] == null)
+        if( Profile.flyerID == 0 )
+        //if (Request.Cookies["flyerID"]== null)
             Response.Redirect("Login.aspx");
 
         if (profileForm.ActiveStep.StepType == WizardStepType.Start)
@@ -25,7 +26,15 @@ public partial class _Default : System.Web.UI.Page
 
         {
 
-            SqlCommand sqlCommand = new SqlCommand( "SELECT * FROM FrequentFlyers WHERE flyerID = " + Request.QueryString["flyerID"], dbConnection);
+            SqlCommand sqlCommand = new SqlCommand(
+                "SELECT * FROM FrequentFlyers WHERE flyerID = "
+
+                + Profile.flyerID,
+                //+ Request.Cookies["flyerID"].Value,
+
+                //+ Request.QueryString["flyerID"],
+                
+                dbConnection);
             SqlDataReader userInfo = sqlCommand.ExecuteReader();
             if (userInfo.Read())
 
@@ -49,7 +58,9 @@ public partial class _Default : System.Web.UI.Page
                 serviceClass.Text = userInfo["class"].ToString();
                 seatPreference.Text = userInfo["seat"].ToString();
                 mealRequest.Text = userInfo["meal"].ToString();
-                updateOK.Text = "<p>Account successfully updated.</ p >< p >< a href = 'ffClubPage.aspx? = " + Request.QueryString["flyerID"] + "'>Account Profile page</a></p>";
+
+                updateOK.Text = "<p>Account successfully updated.</p><p><a href='ffClubPage.aspx'> Account Profile page</a></p>";
+                //updateOK.Text = "<p>Account successfully updated.</ p >< p >< a href = 'ffClubPage.aspx? = " + Request.Cookies["flyerID"]+ "'>Account Profile page</a></p>";
             } else {
 
                 profileForm.Visible = false;
@@ -97,7 +108,10 @@ public partial class _Default : System.Web.UI.Page
                     + "seat ='" + seatPreference.Text + "',"
                     + "meal ='" + mealRequest.Text
                     + "' WHERE flyerID = "
-                    + Request.QueryString["flyerID"], dbConnection);
+                    + Profile.flyerID, dbConnection);
+                    //+ Request.Cookies["flyerID"].Value, dbConnection);
+
+                    //+ Request.QueryString["flyerID"], dbConnection);
 
                 sqlCommand.ExecuteNonQuery();
                 dbConnection.Close();
