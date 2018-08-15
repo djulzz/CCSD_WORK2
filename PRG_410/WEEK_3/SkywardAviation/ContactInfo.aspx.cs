@@ -11,8 +11,12 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if( Profile.flyerID == 0 )
-        //if (Request.Cookies["flyerID"]== null)
+        //if( Profile.flyerID == 0 )
+        //if( Session["flyerID"] == null )
+        //{
+        //    Response.Redirect("Login.aspx");
+        //}
+        if (Request.Cookies["flyerID"]== null)
             Response.Redirect("Login.aspx");
 
         if (profileForm.ActiveStep.StepType == WizardStepType.Start)

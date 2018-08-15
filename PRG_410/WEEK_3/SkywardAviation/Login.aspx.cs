@@ -33,7 +33,7 @@ public partial class _Default : System.Web.UI.Page
                     //flyerIDObject.Expires = DateTime.Now.AddDays(30);
                     //Response.Cookies.Add(flyerIDObject);
                     Response.Redirect("ffClubPage.aspx");
-                    //Response.Redirect("ffClubPage.aspx?flyerID=" + curUser["flyerID"]);
+                    Response.Redirect("ffClubPage.aspx?flyerID=" + curUser["flyerID"]);
                 }
                 else
                     badLogin.Text = "<p style='color:red'> < strong > Incorrect ID or password. < strong ></ p > ";

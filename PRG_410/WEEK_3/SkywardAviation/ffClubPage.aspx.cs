@@ -13,11 +13,8 @@ public partial class _Default : System.Web.UI.Page
         if( Profile.flyerID == 0 )
         {
             Response.Redirect("Login.aspx");
+            //Profile.flyerID = 
         }
-
-        //if (Request.Cookies["flyerID"]== null)
-
-        //    Response.Redirect("Login.aspx");
 
         else
 
