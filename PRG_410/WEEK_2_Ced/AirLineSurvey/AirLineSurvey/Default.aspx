@@ -8,7 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ListBox ID="ListBox_Flights" runat="server"></asp:ListBox>
+        <asp:ListBox ID="ListBox_Flights" runat="server">
+
+        </asp:ListBox>
         <br />
         Noise<asp:RadioButtonList ID="R_Noise" runat="server" OnSelectedIndexChanged="Handle_Rating" AutoPostBack="true" RepeatDirection="Horizontal"></asp:RadioButtonList>
         Space<asp:RadioButtonList ID="R_Space" runat="server" OnSelectedIndexChanged="Handle_Rating" AutoPostBack="true" RepeatDirection="Horizontal"></asp:RadioButtonList>

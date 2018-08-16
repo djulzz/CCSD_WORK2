@@ -10,7 +10,7 @@ namespace Chapter10
     {
         static void Main(string[] args)
         {
-            Enemy e = new Enemy();
+            //Enemy e = new Enemy();
             BigBoss b = new BigBoss();
 
             e.Talk();
