@@ -117,12 +117,6 @@
       <DependentUpon>Tutorial.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\WEEK_1\Tutorial_Juergen\Tutorial_Juergen\API_SQL_From_File.csproj">
-      <Project>{e5c6dcf6-244c-4025-b497-b858c8d1fa57}</Project>
-      <Name>API_SQL_From_File</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
